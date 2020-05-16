@@ -1,0 +1,36 @@
+diff -ruNp File-ExtAttr-1.09.orig/Makefile.PL File-ExtAttr-1.09/Makefile.PL
+--- File-ExtAttr-1.09.orig/Makefile.PL	2009-03-07 11:24:25.000000000 +0100
++++ File-ExtAttr-1.09/Makefile.PL	2020-05-16 15:20:13.817160120 +0200
+@@ -20,7 +20,7 @@ if ($^O eq 'linux')
+ {
+     my %headers = (
+         'attr/attributes.h' => 0,
+-        'attr/xattr.h' => 0,
++        'sys/xattr.h' => 0,
+     );
+     my $incdir;
+     my $missing = 0;
+diff -ruNp File-ExtAttr-1.09.orig/README File-ExtAttr-1.09/README
+--- File-ExtAttr-1.09.orig/README	2008-10-27 14:58:34.000000000 +0100
++++ File-ExtAttr-1.09/README	2020-05-16 15:20:49.074987098 +0200
+@@ -42,7 +42,7 @@ use a different file system, e.g.:
+ DEPENDENCIES
+ 
+ On Linux, you will need to install the package that provides
+-the header files <attr/attributes.h> and <attr/xattr.h>. On Fedora
++the header files <attr/attributes.h> and <sys/xattr.h>. On Fedora
+ you can install these as follows:
+ 
+   yum -y install libattr-devel
+diff -ruNp File-ExtAttr-1.09.orig/extattr_linux.h File-ExtAttr-1.09/extattr_linux.h
+--- File-ExtAttr-1.09.orig/extattr_linux.h	2006-10-01 13:18:54.000000000 +0200
++++ File-ExtAttr-1.09/extattr_linux.h	2020-05-16 15:20:20.459127445 +0200
+@@ -3,7 +3,7 @@
+ 
+ #include <sys/types.h>
+ #include <attr/attributes.h>
+-#include <attr/xattr.h>
++#include <sys/xattr.h>
+ 
+ struct hv;
+ 
